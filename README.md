@@ -28,3 +28,13 @@ Each attempt is logged to a file named after the script ( *check_url.sh.log* ).
 If curl succeeds (exit code 0), it prints a success message and stops retrying.
 If it fails, it prints the exit code and a link to curl exit code documentation.
 After a successful connection, it runs an audible alert in a loop, printing "Alert running. Press CTRL+c to stop!" and beeping every second until you manually stop the script.
+
+### fs_utils
+
+- **searchBigFiles.sh**  - This is useful when you want to free up the space of a disk, and you want to detect the biggest files. 
+The script searches for files larger than 1024 MB (1 GB) in the home directory and its subdirectories. The size can be changed according to your needs. 
+It writes the paths and sizes of these large files to /tmp/bigfiles.txt.
+For each file found, if its size exceeds 1024 MB, it logs the file and adds its size to a running total.
+It prints a dot periodically to show progress.
+At the end, it prints the total size of all large files found.
+The script prints the date at the start and end for timing reference.
