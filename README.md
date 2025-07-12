@@ -3,7 +3,7 @@ The collection of my scripts
 
 ## Scope of this repo
 
-This repo is the collection of the scripts I use to automate my jobs.
+This repo is the collection of the (mainly bash) scripts I use to automate my jobs.
 
 They are developed in *quick and dirty* way, so they do not suppose to be an high quality code. There is the better and more usuable, but longest way to do this.
 
