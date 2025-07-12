@@ -22,7 +22,7 @@ This is a script that I use to manage a small amount of data that I want to have
 
 Web oriented scripts.
 
- - **check_url.sh** - Often there are overloaded websites that we wants to know when they are browsabe, due to lower traffic.
+ - **check_url.sh** - Often there are overloaded websites that we wants to know when they are browsable, due to lower traffic.
 This script repeatedly tries to contact a specified URL variable (*google.it* in this example, but you can change it) using curl until it succeeds.
 Each attempt is logged to a file named after the script ( *check_url.sh.log* ).
 If curl succeeds (exit code 0), it prints a success message and stops retrying.
