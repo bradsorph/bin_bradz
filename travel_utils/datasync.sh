@@ -9,7 +9,7 @@ LISTL=$(grep .  $SLIST|wc -l)
 for I in $(cat $SLIST)
 do
 	COUNT=$(expr $COUNT + 1 )
-	echo $COUNT"/"$LISTL" - "$I
+	echo $COUNT" /"$LISTL" - "$I
 	rsync -a "$I" .
 done
 

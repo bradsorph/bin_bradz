@@ -19,7 +19,7 @@ Any contribution to improve these scripts is welcome.
 Scripts for managing data on a USB stick while traveling.
 
 - **datasync.sh**  
-  Run this script from your destination USB stick path. It syncs the directories listed in the file `tosync.txt` (absolute paths required).
+  Run this script from your destination USB stick path. It syncs the directories listed in the file `tosync.txt` (absolute paths required - do not use '/' at the end if you want separate directories in the destination).
 
 - **listModified.sh**  
   After returning from travel, run this script from the USB stick path.  
