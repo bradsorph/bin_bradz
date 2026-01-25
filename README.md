@@ -57,7 +57,7 @@ Scripts for file system management.
 
 ---
 
-#### backup-sync
+#### Backup-sync
 
 A set of scripts to be placed in your external backup device to sync important directories and configuration of your PC, such as:
 
@@ -96,3 +96,50 @@ A set of scripts to be placed in your external backup device to sync important d
   Rotates the `nohup.out` file after execution to archive the last run.
 
 ---
+### wav2mp3
+
+Scripts for converting WAV files to MP3 and managing the process.
+
+**Requirements:**
+- `ffmpeg`: For audio conversion from WAV to MP3.
+- `zip`: For compressing MP3 files.
+- `tar`: For creating backup archives.
+- Standard Unix tools: `find`, `mv`, `ls`, `date`, etc.
+
+**Configuration:**
+- Edit `config.sh` to set the following variables according to your system:
+  - `PROJ`: Project name (e.g., "TOFKAP").
+  - `SRCDIR`: Source directory containing WAV files (e.g., "/Volumes/H2N_SD/").
+  - `TMPF`: Temporary file for file lists (e.g., "./tempfile.txt").
+  - `RIFF`: Audio file to play on completion (e.g., "/path/to/sound.mp3").
+  - `ENCSCRIPT`: Path to the encoding script (e.g., "./wav2mp3.sh").
+  - `BZBACKUP`: Backup directory for WAV files (e.g., "/media/user/USB/Drive/$PROJ").
+  - `CLEANUPS`: Path to cleanup script (e.g., "./cleanup.sh").
+  - `ZIPOK`: File to store zip operation status (e.g., "./zipok.txt").
+
+**Scripts:**
+
+- **config.sh**  
+  Configuration file containing all shared variables. Source this file in other scripts.
+
+- **wav2mp3.sh**  
+  Converts all WAV files in the specified directory to MP3 using `ffmpeg`.  
+  Usage: `./wav2mp3.sh <directory>`  
+  It processes both `.wav` and `.WAV` files, outputting MP3 files in the same directory.
+
+- **process.sh**  
+  Main script to process WAV files: searches for WAV files in `SRCDIR`, moves them to a dated directory, encodes them to MP3, zips the MP3s, and optionally backs up the original WAVs.  
+  Usage: `./process.sh [dirname]`  
+  If no dirname is provided, it uses yesterday's date (adapts to Linux/Mac using `uname`).
+
+- **cleanup.sh**  
+  Cleans up temporary files and removes WAV files if the zip operation succeeded.  
+  Usage: `./cleanup.sh [dirname]`  
+  Called automatically by `process.sh`.
+
+- **main.sh**  
+  Alternative main script with the same functionality as `process.sh`.  
+  Usage: `./main.sh [dirname]`
+
+---
+
