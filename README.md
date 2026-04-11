@@ -143,3 +143,51 @@ Scripts for converting WAV files to MP3 and managing the process.
 
 ---
 
+### picture_mngt
+
+Scripts for organizing and managing photo and video files.
+
+- **organize_foto.sh**  
+  Organizes photos and videos from a source directory into a structured output based on date and location metadata.  
+  Creates hard links to avoid duplicating files, skipping identical files based on MD5 checksum.
+
+  **Requirements:**
+  - `exiftool`: For extracting EXIF metadata (date, GPS coordinates)
+  - `curl` and `jq`: For reverse geocoding GPS coordinates to city/country using Nominatim API
+  - `md5sum`: For duplicate detection (md5 on macOS, md5sum on Linux)
+
+  **Configuration:**
+  - `config.sh`: Contains the base URL for the Nominatim geocoding service (default: https://nominatim.openstreetmap.org)
+
+  **Usage:**
+  ```
+  ./organize_foto.sh [-v] <SOURCE>
+  ```
+  - `<SOURCE>`: Path to the directory containing photos/videos to organize
+  - `-v`: Verbose mode for detailed processing information
+
+  **Output Structure:**
+  ```
+  <SOURCE>_Organized/
+  ├── YYYY/
+  │   └── MM/
+  │       └── YYYYMMDD_HHMM_city_country.ext
+  ```
+
+  **Features:**
+  - Extracts creation date from EXIF DateTimeOriginal (when the photo was taken), falls back to file modification time if not available
+  - Retrieves GPS coordinates and reverse geocodes to city/country using OpenStreetMap Nominatim
+  - Skips duplicate files based on MD5 checksum to avoid redundant organization
+  - Handles filename conflicts by appending counters (_1, _2, etc.) for different files with same metadata
+  - Cross-platform support for Linux and macOS
+  - Progress bar with percentage in non-verbose mode
+  - Respects API rate limits (1 second delay between geocoding requests)
+
+  **Example:**
+  ```
+  ./organize_foto.sh Pictures/Vacation
+  ```
+  This creates `Pictures/Vacation_Organized/` with files organized by date and location.
+
+---
+
