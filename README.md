@@ -189,5 +189,30 @@ Scripts for organizing and managing photo and video files.
   ```
   This creates `Pictures/Vacation_Organized/` with files organized by date and location.
 
+- **resize_jpg.sh**  
+  Resizes JPG/JPEG images to a specified percentage of their original dimensions.  
+  Cross-platform support for macOS and Linux.
+
+  **Requirements:**
+  - `ImageMagick`: For image resizing (provides `convert` or `magick` command)
+    - macOS: `brew install imagemagick`
+    - Linux: `sudo apt install imagemagick`
+
+  **Usage:**
+  ```
+  ./resize_jpg.sh <input.jpg> <percentage>
+  ```
+  - `<input.jpg>`: Path to the JPG/JPEG image file to resize
+  - `<percentage>`: Resize percentage (positive integer, e.g., 50 for 50% of original size)
+
+  **Output:**
+  Creates a new file named `<input>_resized.jpg` with the resized image.
+
+  **Example:**
+  ```
+  ./resize_jpg.sh photo.jpg 50
+  ```
+  This creates `photo_resized.jpg` at 50% of the original size.
+
 ---
 
