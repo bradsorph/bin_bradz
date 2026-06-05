@@ -13,6 +13,6 @@ for I in $(cat $SLIST)
 do
 	COUNT=$(expr $COUNT + 1 )
 	echo $COUNT" /"$LISTL" - "$I
-	rsync -a "$I" "$DESTDIR/"
+	rsync -aL "$I" "$DESTDIR/"
 done
 
