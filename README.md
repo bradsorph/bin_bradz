@@ -96,6 +96,39 @@ A set of scripts to be placed in your external backup device to sync important d
   Rotates the `nohup.out` file after execution to archive the last run.
 
 ---
+
+### records_utils
+
+Scripts for enriching and inspecting Discogs catalog data.
+
+- **discogs-enrich-collection.sh**  
+  Reads a CSV file containing a `release_id` column, queries the Discogs API for each entry, and writes an enriched CSV preserving the original columns while appending metadata such as year, country, labels, catalog numbers, format, genre, style, identifiers, notes, and the Discogs URL.
+
+  **Requirements:**
+  - `curl`
+  - `jq`
+  - A valid Discogs token stored in `~/.config/discogs/token`
+
+  **Usage:**
+  ```
+  ./discogs-enrich-collection.sh collection.csv
+  ```
+
+- **discogs-release.sh**  
+  Fetches one or more Discogs release records by ID and writes both the raw JSON response and a human-readable text report in a `discogs-releases/` folder. It is useful for quick inspection of release metadata such as title, artist, country, labels, tracklist, identifiers, and community data.
+
+  **Requirements:**
+  - `curl`
+  - `jq`
+  - Optional: a Discogs token stored in `~/.config/discogs/token`
+
+  **Usage:**
+  ```
+  ./discogs-release.sh 577332
+  ./discogs-release.sh 577332 9579823 5789680
+  ```
+
+---
 ### wav2mp3
 
 Scripts for converting WAV files to MP3 and managing the process.
