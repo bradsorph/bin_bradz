@@ -99,6 +99,8 @@ A set of scripts to be placed in your external backup device to sync important d
 
 ### records_utils
 
+**DEPRECATED: Moved to:** [discogs2spotify](https://github.com/bradsorph/discogs2spotify) - They will be not updated on this repo anymore.
+
 Scripts for enriching and inspecting Discogs catalog data.
 
 - **discogs-enrich-collection.sh**  
